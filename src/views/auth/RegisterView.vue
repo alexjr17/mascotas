@@ -28,8 +28,9 @@
                 </div>
                 <div class="pt-4 flex justify-between">
                     <button-component
+                        value="Registrar"
                         type="submit">
-                        enviar</button-component>
+                    </button-component>
                     <router-link to='/Login'>
                         <a href="#" class="text-blue-500 mr-3 hover:underline">Login</a>
                     </router-link>

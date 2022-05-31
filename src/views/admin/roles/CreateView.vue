@@ -61,7 +61,7 @@ export default {
             try {
                 let res = await this.$store.dispatch('set_permissions', {id: this.rol.id, permissions: payload});
                 alert(`se asigno permisos al rol, res:${res}`);
-                this.$router.push({name: 'roles-index', params: {id: this.rol.id}});
+                this.$router.push({name: 'roles.index', params: {id: this.rol.id}});
             } catch (error) {
                 console.log(error);
             }

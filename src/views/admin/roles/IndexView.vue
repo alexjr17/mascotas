@@ -5,7 +5,7 @@
                 <option value="" disabled>Selecione el rol</option>
                 <option v-for="role in roles" :key="role" :value="role.id" @click="permission(role)">{{role.name}}</option>
             </select>
-            <router-link :to="{name: 'roles-create'}">
+            <router-link :to="{name: 'roles.create'}">
                 <button-component 
                 value="Crear Rol"/>
             </router-link>            

@@ -1,7 +1,7 @@
 import middleware from '../middleware';
 import Mascotas from './mascotas'
 import Roles from './roles'
-
+import users from './users'
 
 export default [
     { 
@@ -12,12 +12,13 @@ export default [
         children: [
             {
                 path: '',
-                name: 'dashboard-index',
+                name: 'dashboard.index',
                 component: () => import('../../views/admin/IndexView.vue'),
             }
         ].concat(
             Mascotas,
-            Roles
+            Roles,
+            users
         )
     }
 ]

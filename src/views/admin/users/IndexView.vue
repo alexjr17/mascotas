@@ -1,0 +1,3 @@
+<template>
+    is index
+</template>

@@ -73,27 +73,11 @@ const store = createStore({
             }
         },
         mascotas: {
-            state(){
-                return {
-                    mascotas: null,
-                }
-            },
-            getters: {
-                mascotas(state) {
-                    return state.mascotas;
-                }
-            },
-            mutations: {
-                SET_MASCOTA(state, mascota){
-                    state.mascotas = mascota;
-                }
-            },
             actions: {
-                async get_all_mascotas({ commit }) {
-                    await repository.get_all_mascotas().then(res => {
-                        commit('SET_MASCOTA', res.data);
-                        console.log(res.data);
-                    });
+                async get_all_mascotas({ dispatch }) {
+                    await dispatch('my_permissions');
+                    const {data} = await repository.get_all_mascotas();
+                    return data;
                 },
                 async set_mascota({commit}, mascota){
                     commit;
@@ -157,6 +141,14 @@ const store = createStore({
                     console.log(data);
                     dispatch('get_all_roles');
                     return data;
+                },
+                async my_permissions({commit}){
+                    const {data} = await repository.my_permissions();                    
+                    if(!data){
+                        alert('no tiene acceso');
+                    }
+                    commit('SET_MY_PERMISSIONS', data);
+                    // return data;
                 }
             }
         }

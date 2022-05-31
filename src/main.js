@@ -6,7 +6,6 @@ import router from './router'
 import './index.css'
 import store from "./store/index";
 
-
 window.store;
 window.state = store.state;
 

@@ -11,7 +11,7 @@
             <main-admin></main-admin>
         </div>        
     </div>
-     <!-- {{permissions}} -->
+     {{permissions}}
 </template>
 
 <script>
@@ -34,8 +34,7 @@ export default {
     },
     computed:{
         ...mapGetters({
-        name: 'user',
-        // permissions: 'permissions'
+            name: 'user'
         })
     },
     methods: {

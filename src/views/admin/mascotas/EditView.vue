@@ -77,7 +77,7 @@ export default {
                 const res = await this.$store.dispatch('update_mascota', this.mascota);
                 alert('registro actualizado con exito');
                 console.log(res);
-                await this.$router.push({name: 'mascotas-index'});
+                await this.$router.push({name: 'mascotas.index'});
             } catch (error) {
                 console.log(error);
             }

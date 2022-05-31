@@ -1,14 +1,17 @@
 import { defineAbility } from "@casl/ability";
 import store from "@/store";
-export default defineAbility((can) => {
+export default (user) => defineAbility((can) => {
     let permissions = store.getters.mypermissions;
-    alert(JSON.stringify(permissions));
+    console.log('permisos '+JSON.stringify(permissions));
     if (permissions) {
         permissions.forEach(permission => {
-            // alert(permission['description'] +' ' +permission['name']);
-            can(`${permission['description']}`, `${permission['name']}`);
-        }); 
-        // can('create mascotas', 'mascotas.create')
+            // if(permission['description']){
+            //     can(`${permission['description']}`, `${permission['name']}`);
+            // }else {
+                can(`${permission['description']}`, `${permission['name']}`, {authorId: user.id});
+            // }            
+        });         
     }
+    // can('mascotas', 'mascotas');
     
 });

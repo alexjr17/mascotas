@@ -20,7 +20,7 @@ export default
         return api.post('/logout');
     },
     get_user() {
-        return api.get('api/user');
+        return api.get('api/users/profile');
     },
 
     //////////////////////////////////////////
@@ -41,6 +41,9 @@ export default
     },
     delete_role(id){
         return api.delete(`api/roles/${id}`);
+    },
+    my_permissions() {
+        return api.get('api/roles/mypermissions');
     },
 
     //////////////////////////////////////////

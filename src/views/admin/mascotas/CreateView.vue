@@ -73,7 +73,7 @@ export default {
                 const res = await this.$store.dispatch('set_mascota', this.mascota);
                 alert('se guardo el registro');
                 console.log(res);
-                await this.$router.push({name: 'mascotas-edit', params: { id: res.id }});
+                await this.$router.push({name: 'mascotas.edit', params: { id: res.id }});
             } catch (error) {
                 console.log(error);
             }
