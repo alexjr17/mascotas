@@ -1,6 +1,6 @@
 import repository from "@/api/repository";
 import { createStore } from "vuex";
-
+import ability from "@/ability/ability";
 const store = createStore({
     modules: {
         auth: {
@@ -23,6 +23,9 @@ const store = createStore({
                 },
                 permissions (state) {
                     return state.permissions;
+                },
+                ability(state){
+                    return ability(state.user);
                 }
             },
             mutations:{

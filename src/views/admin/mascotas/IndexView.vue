@@ -1,10 +1,10 @@
 <template>
     <div class="" v-if="mascotas">
-        <router-link :to="{name: 'mascotas.create'}" v-if="permission_create">
+        <router-link :to="{name: 'mascotas.create'}" v-if="ability.can('create mascotas', 'mascotas.create')">
             <button-component 
                 value="Nueva mascota"/>
         </router-link>
-        <table class="flex-block justify-center" v-if="permission_index">
+        <table class="flex-block justify-center" v-if="ability.can('ver mascotas', 'mascotas.index')">
             <thead>
                 <tr>
                     <th>N</th>
@@ -26,11 +26,11 @@
                     <td>{{ mascota.rides }}</td>
                     <td>
                         <div>
-                            <router-link v-if="permission_update" :to="{name: 'mascotas.edit', params:  {id: mascota.id }}">
+                            <router-link :to="{name: 'mascotas.edit', params:  {id: mascota.id }}" v-if="ability.can('editar mascotas', 'mascotas.edit')">
                                 <button-component 
                                     value="Editar"/>
                             </router-link>
-                            <a v-if="permission_destroy" href="#" @click="destroy(mascota.id)"> | Delete</a>
+                            <a href="#" @click="destroy(mascota.id)" v-if="ability.can('delete mascotas', 'mascotas.destroy')"> | Delete</a>
                         </div>
                     </td>
                 </tr>
@@ -41,11 +41,8 @@
 
 <script>
 import ButtonComponent from '@/components/ButtonComponent.vue';
-import ability from '../../../ability/ability';
+import { mapGetters } from 'vuex';
 export default {
-    // inject:{
-    //     ability: { from: ability}
-    // },
     components:{
         ButtonComponent
     },
@@ -59,10 +56,9 @@ export default {
         }
     },    
     computed: {
-        permission_index()  { return ability(this.user).can('listar mascotas', 'mascotas.index')},
-        permission_create()  { return ability(this.user).can('create mascotas', 'mascotas.create')},
-        permission_update()  { return ability(this.user).can('editar mascotas', 'mascotas.edit')},
-        permission_destroy()  { return ability(this.user).can('delete mascotas', 'mascotas.destroy')}    
+        ...mapGetters({
+            ability: 'ability'
+        })
     },
     methods: {
         async get_mascotas() {

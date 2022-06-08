@@ -8,20 +8,20 @@ const navItems = [
     { 
         titulo: 'Mascotas',
         route:'mascotas.index',
-        can: 'listar mascotas',
+        can: 'ver mascotas',
         subroute: [
         ]
     },
     { 
         titulo: 'Roles',
         route:'roles.index',
-        can: 'listar roles',
+        can: 'ver roles',
         subroute: []
     },
     { 
         titulo: 'Usuarios',
         route:'users.index',
-        can: 'listar users',
+        can: 'ver users',
         subroute: []
     },
 ];

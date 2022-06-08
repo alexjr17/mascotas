@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import ability from '../ability/ability';
+import { mapGetters } from 'vuex'
 
 export default {
     data() {
@@ -26,7 +26,9 @@ export default {
         }
     },
     computed: {
-        ability: ability 
+        ...mapGetters({
+            ability: 'ability'
+        })
     },
     props: {
         items: {
