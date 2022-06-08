@@ -125,9 +125,9 @@ const store = createStore({
                 }
             },
             actions: {
-                async get_permissions({commit}, id) {
+                async get_permissions(_, id) {
                     const {data} = await repository.get_permissions(id);
-                    commit('SET_MY_PERMISSIONS', data);
+                    // commit('SET_MY_PERMISSIONS', data);
                     return data;
                 },
                 async set_role(_, params){
@@ -151,7 +151,7 @@ const store = createStore({
                         alert('no tiene acceso');
                     }
                     commit('SET_MY_PERMISSIONS', data);
-                    // return data;
+                    return data;
                 }
             }
         }
